@@ -15,6 +15,14 @@ exports.up = function(knex) {
                 .notNullable()
                 .unique();
 
+            table.string("last_name", 255)
+
+            table.string("first_name", 255)
+
+            table.string("company_name", 255)
+
+            table.string("address", 255)
+
             table.string("")
         })
         .createTable("Items", table => {
