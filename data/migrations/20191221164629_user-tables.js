@@ -1,4 +1,3 @@
-
 exports.up = function(knex) {
     return knex.schema
         .createTable("Users", table => {
@@ -15,26 +14,28 @@ exports.up = function(knex) {
                 .notNullable()
                 .unique();
 
-            table.string("last_name", 255)
+            table.string("last_name", 255);
 
-            table.string("first_name", 255)
+            table.string("first_name", 255);
 
-            table.string("company_name", 255)
+            table.string("company_name", 255);
 
-            table.string("address", 255)
+            table.string("street_address", 255);
 
-            table.string("")
+            table.string("city", 255);
+
+            table.string("country", 255);
         })
         .createTable("Items", table => {
             table.increments();
 
-            table.string("item_name", 255).notNullable()
+            table.string("item_name", 255).notNullable();
             
-            table.string("item_description", 255).notNullable()
+            table.string("item_description", 255).notNullable();
             
-            table.float("item_price").notNullable()
+            table.float("item_price").notNullable();
 
-            table.string("market_location", 255).notNullable()
+            table.string("market_location", 255).notNullable();
 
             table.integer("uid")
                 .unsigned()

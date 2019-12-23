@@ -3,11 +3,13 @@ const jwt = require("jsonwebtoken");
 
 const router = require("express").Router();
 
-router.post("/register", (req, res) => {
+const validate = require("./middleware/validate");
+
+router.post("/register", validate.validateRegister, (req, res) => {
 
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", validate.validateLogin, (req, res) => {
 
 });
 
