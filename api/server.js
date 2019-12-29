@@ -4,7 +4,8 @@ const cors = require("cors");
 
 const authRouter = require("../auth/auth-router");
 const usersRouter = require("../data/helpers/users/users-router");
-const authenticate = require("../auth/middleware/authenticate")
+// const authenticate = require("../auth/middleware/authenticate")
+const itemsRouter = require("../data/helpers/items/items-router");
 
 const server = express();
 
@@ -17,6 +18,6 @@ server.get("/", (req, res) => {
 });
 
 server.use("/api/auth", authRouter);
-server.use("/users", usersRouter, authenticate);
+server.use("/api/users", usersRouter, itemsRouter);
 
-module.exports = server
+module.exports = server;

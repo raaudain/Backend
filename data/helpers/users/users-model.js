@@ -7,6 +7,14 @@ function getUsers(){
         .orderBy("username");
 }
 
+// Retrieves user with id
+function getUser(id){
+    return db("users")
+        .select("username")
+        .where({id})
+        .first();
+}
+
 // Adds user to database
 function addUser(user){
     return db("users")
@@ -17,15 +25,29 @@ function addUser(user){
         });
 }
 
-// Retrieves user with id
-function findUser(id){
+// Retrieves user with username
+function findUser(user){
+    return db("users")
+        .where(user)
+}
+
+function updateUser(id, changes){
     return db("users")
         .where({id})
-        .first();
+        .update(changes);
+}
+
+function removeUser(id){
+    return db("users")
+        .where("id", id)
+        .del();
 }
 
 module.exports = {
     getUsers,
+    getUser,
     addUser,
     findUser,
+    updateUser,
+    removeUser
 }

@@ -1,19 +1,62 @@
 # Backend
 
-Project Name
-African Marketplace 1
+## Endpoints
 
-Pitch
-Sauti Africa empowers small business owners, particularly women, to improve their business and economic opportunities to grow out of poverty.  You will build a platform to enable these business owners to create listing for items they have for sale. 
+### POST /api/auth/register
 
-Example product reference list available here: https://docs.google.com/spreadsheets/d/1cbJQL1JbO5pAV4mss1yH0uMp58lF8TkKZt6NPkF9NLg/edit#gid=0
+* Register new user
+* Required fields
+    - username
+    - password
+    - email
 
-Organization link: http://sautiafrica.org/
 
-MVP
-- A small business owner can log on and see relevant prices in various categories to help them set their own prices. 
-- They can also make listing for what they want to sell, which will show up to all users.  
-- They add a new item by selecting their market location, and then typing in their item name, description, and price. 
+### POST /api/auth/login
 
-Stretch
-- Business owners can upload their picture to their profile
+* User can login
+* Required fields
+    - username
+    - password
+
+
+### POST /api/users/:id/items
+
+* Adds a new item for user
+* Required fields
+    - item_name
+    - item_description
+    - item_price
+
+
+### GET /api/users
+
+* Lists all users in ascending order
+
+
+### GET /api/users/:id
+
+* Retrieves user with id number
+
+
+### GET /api/users/:id/items
+
+* Lists all the items available for a specific user
+
+
+### PUT /api/users/:id
+
+* Updates user information
+* Fields that can be updated
+    - password (bug: updated password isn't hashed)
+    - first_name
+    - last_name
+    - company_name
+    - street_address
+    - city
+    - country
+
+
+### DEL /api/users/:id
+
+* Removes user with id number (bug: doesn't completely delete user info)
+
