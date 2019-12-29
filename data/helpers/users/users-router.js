@@ -31,26 +31,11 @@ router.get("/:id", (req, res) => {
         });
 });
 
-// Adds user
-// router.post("/", (req, res) => {
-//     const add = req.body;
-
-//     Users 
-//         .addUser(add)
-//         .then(newUser => {
-//             res.status(201).json(newUser)
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.status(500).json({message: `${err}`});
-//         });
-// });
-
 // Updates user info
 router.put("/:id", authenticate, (req, res) => {
     const {id} = req.params;
     const change = req.body;
-    console.log(change)
+    
     Users
         .getUser(id)
         .then(() => {
@@ -72,7 +57,7 @@ router.delete("/:id", authenticate, (req, res) => {
 
     Users
         .removeUser(id)
-        .then(user => {
+        .then(() => {
             res.status(200).json({message: "User removed."});
         })
         .catch(err => {

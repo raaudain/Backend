@@ -2,14 +2,16 @@ const db = require("../../db-config");
 
 function getItems(userId){
     return db("users as u")
-        .select("i.item_name", "i.item_description", "i.item_price")
+        .select("i.id", "i.item_name", "i.item_description", "i.item_price")
         .join("items as i", "u.id", "i.uid")
         .where("u.id", userId)
 }
 
-function getItem(userId, id){
-    return getItems(userId)
-        .then(id)
+function getItem(id){
+    return db("items")
+        .select("item_name", "item_description", "item_price")
+        .where({id})
+        .first();
 }
 
 function addItem(item){
@@ -43,4 +45,11 @@ function removeItem(id){
         .del();
 }
 
-module.exports = {getItems, addItem, findUser, updateItem, removeItem}
+module.exports = {
+    getItems,
+    getItem,
+    addItem, 
+    findUser, 
+    updateItem, 
+    removeItem
+}
