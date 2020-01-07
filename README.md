@@ -21,6 +21,43 @@
 * Lists all the items available for a specific user
 
 
+### GET /api/category
+
+* Lists all the categories in alphabetical order
+
+
+### GET /api/category/:id
+
+* Displays specific category using id
+
+
+### GET /api/category/:id/items
+
+* Lists all the items available for a specific category
+
+
+### GET /api/location
+
+* Lists all the categories in alphabetical order
+
+
+### GET /api/location/:id
+
+* Displays specific category using id
+
+
+### GET /api/location/:id/items
+
+* Lists all the items available for a specific location
+
+
+### GET /api/location/:id/items/avg
+
+* Displays the average price for all items for a specific country
+
+
+
+
 ### POST /api/auth/register
 
 * Register new user

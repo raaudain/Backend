@@ -21,6 +21,10 @@ router.get("/:id/items",
         });
 });
 
+// Moved display category items function to cat-router.js in categories folder
+
+// Moved display country items to loc-router.js in location folder
+
 // Display specific item for specific user with ids
 router.get("/:id/items/:id", 
 //validate.validateUserId, 
@@ -73,7 +77,11 @@ router.post("/:id/items",
 });
 
 // Updates item info
-router.put("/:id/items/:id", authenticate, validate.validateUserId, validate.validateItemId, (req, res) => {
+router.put("/:id/items/:id", 
+//authenticate, 
+//validate.validateUserId, 
+//validate.validateItemId, 
+(req, res) => {
     const {id} = req.params
     const change = req.body;
 

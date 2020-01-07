@@ -3,8 +3,22 @@ const db = require("../../db-config");
 function getItems(userId){
     return db("users as u")
         .select("i.id", "i.item_name", "i.item_description", "i.item_price")
-        .join("items as i", "u.id", "i.uid")
-        .where("u.id", userId)
+        .join("items as i", "u.id", "i.u_id")
+        .where("u.id", userId);
+}
+
+function getItemsCat(catId){
+    return db("category as cat")
+        .select("i.id", "i.item_name", "i.item_description", "i.item_price")
+        .join("items as i", "cat.id", "i.c_id")
+        .where("cat.id", catId);
+}
+
+function getItemsCtry(ctryId){
+    return db("location as loc")
+        .select("i.id", "i.item_name", "i.item_description", "i.item_price")
+        .join("items as i", "loc.id", "i.l_id")
+        .where("loc.id", ctryId);
 }
 
 function getItem(id){
@@ -12,6 +26,14 @@ function getItem(id){
         .select("item_name", "item_description", "item_price")
         .where({id})
         .first();
+}
+
+function getAvg4ItemCtry(id){
+    return db("location as loc")
+        .select("i.item_price")
+        .join("items as i", "loc.id", "i.l_id")
+        .where("loc.id", id)
+        //.first();
 }
 
 function addItem(item){
@@ -35,7 +57,7 @@ function findUser(id){
 function updateItem(id, changes){
     return db("items")
         .where("id", id)
-        .update(changes)
+        .update(changes);
 
 }
 
@@ -51,5 +73,8 @@ module.exports = {
     addItem, 
     findUser, 
     updateItem, 
-    removeItem
+    removeItem,
+    getItemsCat,
+    getItemsCtry,
+    getAvg4ItemCtry
 }
