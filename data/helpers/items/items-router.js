@@ -95,7 +95,7 @@ authenticate,
                     return Items
                         .updateItem(id, change)
                         .then(() => {
-                            res.status(200).json({message: "Item data updated."})
+                            res.status(200).json({message: "Item data updated"})
                         });
                 });
         })
@@ -119,7 +119,7 @@ authenticate,
             return Items
                 .removeItem(id)
                 .then(() => {
-                    res.status(200).json({message: "Item removed."});
+                    res.status(200).json({message: "Item removed"});
                 })
         })
         .catch(err => {

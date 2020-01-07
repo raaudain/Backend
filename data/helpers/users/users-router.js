@@ -48,7 +48,7 @@ authenticate,
             return Users
                 .updateUser(id, change)
                 .then(() => {
-                    res.status(200).json({message: "User data updated."});
+                    res.status(200).json({message: "User data updated"});
                 });
         })
         .catch(err => {
@@ -67,7 +67,7 @@ authenticate,
     Users
         .removeUser(id)
         .then(() => {
-            res.status(200).json({message: "User removed."});
+            res.status(200).json({message: "User removed"});
         })
         .catch(err => {
             console.log(err);
