@@ -91,7 +91,10 @@
     - item_name
     - item_description
     - item_price
-    - market_location
+    - c_id
+        - c_id is the category id (see category ids here: GET /api/category)
+    - l_id
+        - l_id is the location id (see location ids here: GET /api/location)
 
 
 ### PUT /api/users/:id

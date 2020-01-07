@@ -22,8 +22,7 @@ function addUser(user){
         .then(ids => {
             console.log(user)
             const [id] = ids;
-            return db("users")
-                
+            return db("users")             
                 .where({id})
                 .first();
         });

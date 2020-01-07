@@ -54,7 +54,7 @@ authenticate,
 (req, res) => {
     const {id} = req.params;
     const item = req.body;
-    console.log(req)
+
     Items
         .findUser(id)
         .then(() => {
@@ -64,8 +64,8 @@ authenticate,
                     item_name: item.item_name,
                     item_description: item.item_description,
                     item_price: item.item_price,
-                    category: item.c_id,
-                    location: item.l_id
+                    c_id: item.c_id,
+                    l_id: item.l_id
                 })
                 .then(() => {
                     res.status(201).json(item);
