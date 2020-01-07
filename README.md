@@ -3,6 +3,7 @@
 ## URL
 
 * https://build-week-africanmarketplace.herokuapp.com
+    - Uses CORS
 
 ## Endpoints
 
