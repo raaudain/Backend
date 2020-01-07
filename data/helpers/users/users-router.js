@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 const Users = require("./users-model");
 const authenticate = require("../../../auth/middleware/authenticate");
+const validate = require("../middleware/validate");
 
 // Displays users
 router.get("/", (req, res) => {
@@ -17,7 +18,9 @@ router.get("/", (req, res) => {
 });
 
 // Displays specific user with id
-router.get("/:id", (req, res) => {
+router.get("/:id", 
+//validate.validateUserId, 
+(req, res) => {
     const {id} = req.params;
 
     Users  
@@ -32,7 +35,10 @@ router.get("/:id", (req, res) => {
 });
 
 // Updates user info
-router.put("/:id", authenticate, (req, res) => {
+router.put("/:id", 
+//authenticate, 
+//validate.validateUserId, 
+(req, res) => {
     const {id} = req.params;
     const change = req.body;
     
@@ -52,7 +58,10 @@ router.put("/:id", authenticate, (req, res) => {
 });
 
 // Deletes user
-router.delete("/:id", authenticate, (req, res) => {
+router.delete("/:id", 
+//authenticate, 
+//validate.validateUserId, 
+(req, res) => {
     const {id} = req.params;
 
     Users

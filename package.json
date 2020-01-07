@@ -8,7 +8,8 @@
   "scripts": {
     "server": "nodemon index.js",
     "test": "jest --watch",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dbredo" : "npx knex migrate:rollback && rm ./data/users.db3 && npx knex migrate:latest && npx knex seed:run"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
