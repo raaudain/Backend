@@ -68,6 +68,9 @@
 * Returns the average of an item's price based on location
 
 
+### GET /api/category/:id/location/:id/items/avg
+
+
 ### POST /api/auth/register
 
 * Register new user

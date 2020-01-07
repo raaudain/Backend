@@ -27,7 +27,7 @@ function validateUser(req, res, next){
     if(body && Object.keys(body).length === 0){
         res.status(400).json({message: "Missing user data"});
     }
-    else if(body && (!body.notes || !body.description)){
+    else if(body && (!body.password)){
         res.status(400).json({message: "Missing required field"});
     }
     else{
