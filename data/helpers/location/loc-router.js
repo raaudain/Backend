@@ -94,6 +94,7 @@ router.get("/:id/items/:id/avg", (req, res) => {
         });
 });
 
+// Returns the average of an item's price based on location
 router.get("/:id/category/:id/items/avg", (req, res) => {
     const {id} = req.params;
 
@@ -118,5 +119,23 @@ router.get("/:id/category/:id/items/avg", (req, res) => {
         });
 });
 
+// Displays items based on location and category
+router.get("/:id/category/:id/items", (req, res) => {
+    const {id} = req.params;
+
+    Location
+        .getCtry(id)
+        .then(() => {
+            return Location
+                .getAvg(id)
+                .then(i => {   
+                    res.status(200).json(i);
+                })
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({message: `${err}`});
+        });
+});
 
 module.exports = router;

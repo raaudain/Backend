@@ -56,6 +56,14 @@
 * Displays the average price for all items for a specific country
 
 
+### GET /api/location/:id/category/:id/items
+
+* Displays items based on location and category
+
+
+### GET /api/location/:id/category/:id/items/avg
+
+* Returns the average of an item's price based on location
 
 
 ### POST /api/auth/register
