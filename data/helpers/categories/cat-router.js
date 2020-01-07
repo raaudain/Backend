@@ -72,23 +72,15 @@ router.get("/:id/location/:id/items/avg", (req, res) => {
         });
 });
 
-// Displays items based on location and category
-router.get("/:id/location/:id/items", (req, res) => {
+// Displays countries offerring a specific category
+router.get("/:id/location", (req, res) => {
     const {id} = req.params;
 
     Categories
-        .getCat(id)
-        .then(() => {
-            return Location
-                .getAvg(id)
-                .then(i => {   
-                    res.status(200).json(i);
-                })
+        .getCatLoc(id)
+        .then(i => {
+            res.status(200).json(i)
         })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({message: `${err}`});
-        });
 });
 
 module.exports = router;

@@ -12,7 +12,16 @@ function getCat(id){
         .first();
 }
 
+function getCatLoc(id){
+    return db("category")
+        .select("*")
+        .join("location", "category.id", "location.cat_id")
+        .where("location.cat_id", id)
+}
+
+
 module.exports = {
     getCats,
-    getCat
+    getCat,
+    getCatLoc
 }
