@@ -36,7 +36,7 @@ router.get("/:id",
 
 // Updates user info
 router.put("/:id", 
-//authenticate, 
+authenticate, 
 //validate.validateUserId, 
 (req, res) => {
     const {id} = req.params;
@@ -59,7 +59,7 @@ router.put("/:id",
 
 // Deletes user
 router.delete("/:id", 
-//authenticate, 
+authenticate, 
 //validate.validateUserId, 
 (req, res) => {
     const {id} = req.params;

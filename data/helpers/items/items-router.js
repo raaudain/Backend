@@ -49,22 +49,23 @@ router.get("/:id/items/:id",
 
 // Adds new item
 router.post("/:id/items", 
-//authenticate, 
+authenticate, 
 //validate.validateUserId, 
 (req, res) => {
     const {id} = req.params;
     const item = req.body;
-
+    console.log(req)
     Items
         .findUser(id)
         .then(() => {
             return Items
                 .addItem({
-                    uid: id,
+                    u_id: id,
                     item_name: item.item_name,
                     item_description: item.item_description,
                     item_price: item.item_price,
-                    market_location: item.market_location
+                    category: item.c_id,
+                    location: item.l_id
                 })
                 .then(() => {
                     res.status(201).json(item);
@@ -78,7 +79,7 @@ router.post("/:id/items",
 
 // Updates item info
 router.put("/:id/items/:id", 
-//authenticate, 
+authenticate, 
 //validate.validateUserId, 
 //validate.validateItemId, 
 (req, res) => {
@@ -106,7 +107,7 @@ router.put("/:id/items/:id",
 
 // Deletes item
 router.delete("/:id/items/:id", 
-//authenticate, 
+authenticate, 
 //validate.validateItemId, 
 //validate.validateUserId, 
 (req, res) => {

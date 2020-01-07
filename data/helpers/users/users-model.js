@@ -22,7 +22,10 @@ function addUser(user){
         .then(ids => {
             console.log(user)
             const [id] = ids;
-            return findUser(id);
+            return db("users")
+                
+                .where({id})
+                .first();
         });
 }
 

@@ -17,8 +17,7 @@ router.post("/register",
     Users
         .addUser(user)
         .then(add => {
-            console.log(add)
-            res.status(201).json(add);
+            res.status(201).json({message: "Account created"});
         })
         .catch(err => {
             console.log(err);
