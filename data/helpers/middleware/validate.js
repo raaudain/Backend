@@ -5,19 +5,19 @@ function validateUserId(req, res, next){
     const {id} = req.params;
 
     Users
-        .getUsers(id)
+        .getUser(id)
         .then(user => {
             if(!user){
                 res.status(400).json({message: "Invalid user id."})
             }
             else{
-                req.action = action;
+                //req.action = action;
                 next();
             }
         })
         .catch(err => {
             console.log(err);
-            res.status(500).json(err);
+            res.status(500).json({message: `${err}`});
         });
 }
 
@@ -33,4 +33,30 @@ function validateUser(req, res, next){
     else{
         next();
     }
+}
+
+function validateItemId(req, res, next){
+    const {id} = req.params;
+
+    Items
+        .getItem(id)
+        .then(item => {
+            if(!item){
+                res.status(400).json({message: "Invalid item id."})
+            }
+            else{
+                //req.action = action;
+                next();
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({message: `${err}`});
+        });
+}
+
+module.exports = {
+    validateUser,
+    validateUserId,
+    validateItemId
 }

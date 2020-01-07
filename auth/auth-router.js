@@ -7,7 +7,9 @@ const Users = require("../data/helpers/users/users-model");
 const validate = require("./middleware/validate");
 
 // Register new users
-router.post("/register", validate.validateRegister, (req, res) => {
+router.post("/register", 
+//validate.validateRegister, 
+(req, res) => {
     const user = req.body;
     const hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
@@ -15,7 +17,7 @@ router.post("/register", validate.validateRegister, (req, res) => {
     Users
         .addUser(user)
         .then(add => {
-            res.status(201).json(add);
+            res.status(201).json({message: "Account created"});
         })
         .catch(err => {
             console.log(err);
@@ -24,7 +26,9 @@ router.post("/register", validate.validateRegister, (req, res) => {
 });
 
 // Login
-router.post("/login", validate.validateLogin, (req, res) => {
+router.post("/login", 
+//validate.validateLogin, 
+(req, res) => {
     const {username, password} = req.body;
 
     Users

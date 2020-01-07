@@ -22,6 +22,51 @@
 * Lists all the items available for a specific user
 
 
+### GET /api/category
+
+* Lists all the categories in alphabetical order
+
+
+### GET /api/category/:id
+
+* Displays specific category using id
+
+
+### GET /api/category/:id/items
+
+* Lists all the items available for a specific category
+
+
+### GET /api/location
+
+* Lists all the categories in alphabetical order
+
+
+### GET /api/location/:id
+
+* Displays specific category using id
+
+
+### GET /api/location/:id/items
+
+* Lists all the items available for a specific location
+
+
+### GET /api/location/:id/items/avg
+
+* Displays the average price for all items for a specific country
+
+
+### GET /api/location/:id/category/:id/items
+
+* Displays items based on location and category
+
+
+### GET /api/location/:id/category/:id/items/avg
+
+* Returns the average of an item's price based on location
+
+
 ### POST /api/auth/register
 
 * Register new user
@@ -46,7 +91,10 @@
     - item_name
     - item_description
     - item_price
-    - market_location
+    - c_id
+        - c_id is the category id (see category ids here: GET /api/category)
+    - l_id
+        - l_id is the location id (see location ids here: GET /api/location)
 
 
 ### PUT /api/users/:id

@@ -2,9 +2,12 @@ const router = require("express").Router();
 
 const Items = require("./items-model");
 const authenticate = require("../../../auth/middleware/authenticate");
+const validate = require("../middleware/validate");
 
 // Display items for user
-router.get("/:id/items", (req, res) => {
+router.get("/:id/items", 
+//validate.validateUserId, 
+(req, res) => {
     const {id} = req.params;
 
     Items
@@ -18,8 +21,15 @@ router.get("/:id/items", (req, res) => {
         });
 });
 
+// Moved display category items function to cat-router.js in categories folder
+
+// Moved display country items to loc-router.js in location folder
+
 // Display specific item for specific user with ids
-router.get("/:id/items/:id", (req, res) => {
+router.get("/:id/items/:id", 
+//validate.validateUserId, 
+//validate.validateItemId, 
+(req, res) => {
     const {id} = req.params;
 
     Items
@@ -38,7 +48,10 @@ router.get("/:id/items/:id", (req, res) => {
 });
 
 // Adds new item
-router.post("/:id/items", authenticate, (req, res) => {
+router.post("/:id/items", 
+authenticate, 
+//validate.validateUserId, 
+(req, res) => {
     const {id} = req.params;
     const item = req.body;
 
@@ -47,11 +60,12 @@ router.post("/:id/items", authenticate, (req, res) => {
         .then(() => {
             return Items
                 .addItem({
-                    uid: id,
+                    u_id: id,
                     item_name: item.item_name,
                     item_description: item.item_description,
                     item_price: item.item_price,
-                    market_location: item.market_location
+                    c_id: item.c_id,
+                    l_id: item.l_id
                 })
                 .then(() => {
                     res.status(201).json(item);
@@ -64,7 +78,11 @@ router.post("/:id/items", authenticate, (req, res) => {
 });
 
 // Updates item info
-router.put("/:id/items/:id", authenticate, (req, res) => {
+router.put("/:id/items/:id", 
+authenticate, 
+//validate.validateUserId, 
+//validate.validateItemId, 
+(req, res) => {
     const {id} = req.params
     const change = req.body;
 
@@ -88,7 +106,11 @@ router.put("/:id/items/:id", authenticate, (req, res) => {
 });
 
 // Deletes item
-router.delete("/:id/items/:id", authenticate, (req, res) => {
+router.delete("/:id/items/:id", 
+authenticate, 
+//validate.validateItemId, 
+//validate.validateUserId, 
+(req, res) => {
     const {id} = req.params;
 
     Items
