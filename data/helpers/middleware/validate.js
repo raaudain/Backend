@@ -8,7 +8,7 @@ function validateUserId(req, res, next){
         .getUser(id)
         .then(user => {
             if(!user){
-                res.status(400).json({message: "Invalid user id."})
+                res.status(400).json({message: "Invalid user id"})
             }
             else{
                 //req.action = action;
@@ -25,10 +25,10 @@ function validateUser(req, res, next){
     const body = req.body;
 
     if(body && Object.keys(body).length === 0){
-        res.status(400).json({message: "Missing user data."});
+        res.status(400).json({message: "Missing user data"});
     }
     else if(body && (!body.notes || !body.description)){
-        res.status(400).json({message: "Missing required field."});
+        res.status(400).json({message: "Missing required field"});
     }
     else{
         next();
@@ -42,7 +42,7 @@ function validateItemId(req, res, next){
         .getItem(id)
         .then(item => {
             if(!item){
-                res.status(400).json({message: "Invalid item id."})
+                res.status(400).json({message: "Invalid item id"})
             }
             else{
                 //req.action = action;

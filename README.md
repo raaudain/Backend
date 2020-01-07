@@ -4,6 +4,7 @@
 
 * https://build-week-africanmarketplace.herokuapp.com
     - Uses CORS
+    - The api is set up where duplicates of usernames, emails, categories,locations, and ids can't be added to the database.
 
 ## Endpoints
 

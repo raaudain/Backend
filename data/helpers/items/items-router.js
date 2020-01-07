@@ -64,7 +64,9 @@ authenticate,
                     item_name: item.item_name,
                     item_description: item.item_description,
                     item_price: item.item_price,
+                    // c_id is the category id (see category ids here: GET /api/category)
                     c_id: item.c_id,
+                    // l_id is the location id (see location ids here: GET /api/location)
                     l_id: item.l_id
                 })
                 .then(() => {
