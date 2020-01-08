@@ -8,7 +8,7 @@ const validate = require("./middleware/validate");
 
 // Register new users
 router.post("/register", 
-//validate.validateRegister, 
+validate.validateRegister, 
 (req, res) => {
     const user = req.body;
     const hash = bcrypt.hashSync(user.password, 10);
@@ -27,15 +27,17 @@ router.post("/register",
 
 // Login
 router.post("/login", 
-//validate.validateLogin, 
+validate.validateLogin, 
 (req, res) => {
     const {username, password} = req.body;
-
+    console.log(req.headers)
+    console.log(req.body)
+    
     Users
         .findUser({username})
         .first()
         .then(user => {
-            
+            console.log(user)
             if(user && bcrypt.compareSync(password, user.password)){
                 const token = signedToken(user);
                 
@@ -57,7 +59,7 @@ router.post("/login",
 function signedToken(user){
     const payload = {
         subject: user.id,
-        username: user.username
+        username: user.username,
     };
 
     const secret = process.env.JWT_SECRET || "stay secret";

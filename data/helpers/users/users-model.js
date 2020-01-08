@@ -3,7 +3,7 @@ const db = require("../../db-config");
 // Retrieves list of usernames
 function getUsers(){
     return db("users")
-        .select("id", "username")
+        .select("id", "username", "profile_img")
         .orderBy("username");
 }
 

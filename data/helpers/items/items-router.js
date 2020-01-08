@@ -36,6 +36,7 @@ router.get("/:id/items/:id",
     Users
         .getUser(id)
         .then(() => {
+            
             return Items
                 .getItem(id)
                 .then(item => {

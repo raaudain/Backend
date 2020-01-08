@@ -2,7 +2,8 @@ const db = require("../../db-config");
 
 function getCats(){
     return db("category")
-        .orderBy("category");
+        .select("id", "category", "imgUrl")
+        //.orderBy("category")        
 }
 
 function getCat(id){
@@ -27,9 +28,19 @@ function getCatLocAvg(id){
         .where("location.id", id)
 }
 
+function getTest(id){
+    return db("category")
+        .select("*")
+        .join("location", "category.id", "location.cat_id")
+        //.join("items", "location.id", "items.c_id")
+        .where("category.id", id)
+        
+}
+
 module.exports = {
     getCats,
     getCat,
     getCatLoc,
-    getCatLocAvg
+    getCatLocAvg,
+    getTest
 }
