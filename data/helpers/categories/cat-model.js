@@ -2,10 +2,8 @@ const db = require("../../db-config");
 
 function getCats(){
     return db("category")
-        .select("*")
-        //.orderBy("category")
-        
-        
+        .select("id", "category", "imgUrl")
+        //.orderBy("category")        
 }
 
 function getCat(id){
