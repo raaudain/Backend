@@ -75,6 +75,13 @@ exports.up = function(knex) {
         .createTable("Location", table => {
             table.increments();
 
+            table.integer("cat_id")
+            .unsigned()
+                .notNullable()
+                .references("id")
+                .inTable("Category")
+                .onUpdate("CASCADE")
+                .onDelete("CASCADE");
 
             table.string("country", 128).notNullable().unique();
         })

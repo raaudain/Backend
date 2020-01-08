@@ -1,15 +1,16 @@
 const router = require("express").Router();
 
+const Users = require("../users/users-model")
 const Items = require("./items-model");
 const authenticate = require("../../../auth/middleware/authenticate");
 const validate = require("../middleware/validate");
 
 // Display items for user
 router.get("/:id/items", 
-//validate.validateUserId, 
+validate.validateUserId, 
 (req, res) => {
     const {id} = req.params;
-
+    
     Items
         .getItems(id)
         .then(item => {
@@ -27,8 +28,8 @@ router.get("/:id/items",
 
 // Display specific item for specific user with ids
 router.get("/:id/items/:id", 
-//validate.validateUserId, 
-//validate.validateItemId, 
+validate.validateUserId, 
+validate.validateItemId, 
 (req, res) => {
     const {id} = req.params;
 
@@ -38,6 +39,7 @@ router.get("/:id/items/:id",
             return Items
                 .getItem(id)
                 .then(item => {
+                    console.log(item)
                     res.status(200).json(item);
                 })
         })
@@ -64,7 +66,9 @@ authenticate,
                     item_name: item.item_name,
                     item_description: item.item_description,
                     item_price: item.item_price,
+                    // c_id is the category id (see category ids here: GET /api/category)
                     c_id: item.c_id,
+                    // l_id is the location id (see location ids here: GET /api/location)
                     l_id: item.l_id
                 })
                 .then(() => {
@@ -95,7 +99,7 @@ authenticate,
                     return Items
                         .updateItem(id, change)
                         .then(() => {
-                            res.status(200).json({message: "Item data updated."})
+                            res.status(200).json({message: "Item data updated"})
                         });
                 });
         })
@@ -119,7 +123,7 @@ authenticate,
             return Items
                 .removeItem(id)
                 .then(() => {
-                    res.status(200).json({message: "Item removed."});
+                    res.status(200).json({message: "Item removed"});
                 })
         })
         .catch(err => {

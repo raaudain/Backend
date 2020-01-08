@@ -4,6 +4,7 @@
 
 * https://build-week-africanmarketplace.herokuapp.com
     - Uses CORS
+    - The api is set up where duplicates of usernames, emails, categories,locations, and ids can't be added to the database.
 
 ## Endpoints
 
@@ -67,6 +68,21 @@
 * Returns the average of an item's price based on location
 
 
+### GET /:id/location
+
+* Displays countries offering a specific category
+
+
+### GET /location/:id
+
+* Displays items based on category and location
+
+
+### GET /location/:id/avg
+
+* Returns the average of an item's price based on location
+
+
 ### POST /api/auth/register
 
 * Register new user
@@ -95,6 +111,7 @@
         - c_id is the category id (see category ids here: GET /api/category)
     - l_id
         - l_id is the location id (see location ids here: GET /api/location)
+
 
 
 ### PUT /api/users/:id

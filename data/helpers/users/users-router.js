@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 
 // Displays specific user with id
 router.get("/:id", 
-//validate.validateUserId, 
+validate.validateUserId, 
 (req, res) => {
     const {id} = req.params;
 
@@ -37,7 +37,8 @@ router.get("/:id",
 // Updates user info
 router.put("/:id", 
 authenticate, 
-//validate.validateUserId, 
+validate.validateUserId, 
+//validate.validateUser, 
 (req, res) => {
     const {id} = req.params;
     const change = req.body;
@@ -48,7 +49,7 @@ authenticate,
             return Users
                 .updateUser(id, change)
                 .then(() => {
-                    res.status(200).json({message: "User data updated."});
+                    res.status(200).json({message: "User data updated"});
                 });
         })
         .catch(err => {
@@ -60,14 +61,14 @@ authenticate,
 // Deletes user
 router.delete("/:id", 
 authenticate, 
-//validate.validateUserId, 
+validate.validateUserId, 
 (req, res) => {
     const {id} = req.params;
 
     Users
         .removeUser(id)
         .then(() => {
-            res.status(200).json({message: "User removed."});
+            res.status(200).json({message: "User removed"});
         })
         .catch(err => {
             console.log(err);
