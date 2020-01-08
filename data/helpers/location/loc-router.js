@@ -132,10 +132,7 @@ router.get("/:id/category/:id/items", (req, res) => {
                     res.status(200).json(i);
                 })
         })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({message: `${err}`});
-        });
+        
 });
 
 module.exports = router;

@@ -68,7 +68,19 @@
 * Returns the average of an item's price based on location
 
 
-### GET /api/category/:id/location/:id/items/avg
+### GET /:id/location
+
+* Displays countries offering a specific category
+
+
+### GET /location/:id
+
+* Displays items based on category and location
+
+
+### GET /location/:id/avg
+
+* Returns the average of an item's price based on location
 
 
 ### POST /api/auth/register
@@ -99,6 +111,7 @@
         - c_id is the category id (see category ids here: GET /api/category)
     - l_id
         - l_id is the location id (see location ids here: GET /api/location)
+
 
 
 ### PUT /api/users/:id
