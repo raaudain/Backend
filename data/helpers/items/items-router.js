@@ -33,8 +33,8 @@ router.get("/:id/items/:id",
 (req, res) => {
     const {id} = req.params;
 
-    Items
-        .getItems(id)
+    User
+        .getUser(id)
         .then(() => {
             return Items
                 .getItem(id)
