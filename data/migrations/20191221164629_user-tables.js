@@ -27,7 +27,7 @@ exports.up = function(knex) {
             table.string("country", 128);
 
             table.string("profile_img", 128)
-                .defaultTo("data/img/Profile_picture.png")
+                .defaultTo("https://www.clker.com/cliparts/3/c/9/0/15346636991003506792default_user.med.png")
         })
         .createTable("Items", table => {
             table.increments();
