@@ -24,7 +24,7 @@ function getItemsCtry(ctryId){
 function getItem(id){
     return db("items")
         .select("item_name", "item_description", "item_price")
-        .where(id)
+        .where({id})
         .first();
 }
 
