@@ -25,6 +25,9 @@ exports.up = function(knex) {
             table.string("city", 128);
 
             table.string("country", 128);
+
+            table.string("profile_img", 128)
+                .defaultTo("data/img/Profile_picture.png")
         })
         .createTable("Items", table => {
             table.increments();
@@ -71,6 +74,9 @@ exports.up = function(knex) {
                 .onDelete("CASCADE");
 
             table.string("category", 128).notNullable().unique();
+
+            table.string("imgUrl", 255)
+            
         })
         .createTable("Location", table => {
             table.increments();
