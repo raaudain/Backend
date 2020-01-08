@@ -28,8 +28,8 @@ validate.validateUserId,
 
 // Display specific item for specific user with ids
 router.get("/:id/items/:id", 
-validate.validateUserId, 
-validate.validateItemId, 
+//validate.validateUserId, 
+//validate.validateItemId, 
 (req, res) => {
     const {id} = req.params;
 
