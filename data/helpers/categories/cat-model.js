@@ -8,7 +8,7 @@ function getCats(){
 
 function getCat(id){
     return db("category")
-        .select("category")
+        .select("category", "imgURL")
         .where({id})
         .first();
 }
